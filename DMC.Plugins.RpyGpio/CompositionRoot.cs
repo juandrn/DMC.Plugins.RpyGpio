@@ -1,4 +1,5 @@
-﻿using NetXP.NetStandard.DependencyInjection;
+﻿using DMC.Invokers;
+using NetXP.NetStandard.DependencyInjection;
 using rnet.lib;
 using rnet.lib.Implementations.Live;
 using System;
@@ -9,28 +10,31 @@ namespace DMC.Plugins.RpyGpio
 {
     public class CompositionRoot : DMC.Invokers.ICompositionRoot
     {
+        public PluginContext PluginContext { get; set; }
+
         public void ForAll(IRegister r)
         {
-            var rpyProcess = new LiveProcess("../plugins/rpy/rwy/rwy.py");
+
+            var rpyProcess = new LiveProcess($"{PluginContext.Dir}/rwy/rwy.py");
             r.RegisterInstance<IPyProcess>(rpyProcess, DILifeTime.Singleton);
         }
 
         public void ForLinux(IRegister r)
         {
-            r.Register<IGPIOBusiness, Implementations.GPIOInvokerNotImplemented>();
             ForAll(r);
+            r.Register<IGPIOBusiness, Implementations.GPIOInvokerNotImplemented>();
         }
 
         public void ForRaspberry(IRegister r)
         {
-            r.Register<IGPIOBusiness, Implementations.RaspberryRNetInvoker>();
             ForAll(r);
+            r.Register<IGPIOBusiness, Implementations.RaspberryRNetInvoker>();
         }
 
         public void ForWindows(IRegister r)
         {
-            r.Register<IGPIOBusiness, Implementations.GPIOInvokerNotImplemented>();
             ForAll(r);
+            r.Register<IGPIOBusiness, Implementations.GPIOInvokerNotImplemented>();
         }
     }
 }
