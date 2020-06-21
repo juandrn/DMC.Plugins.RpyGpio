@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+    <AssemblyName>DMC.RpyGpio.Plugin</AssemblyName>
+    <RootNamespace>DMC.RpyGpio.Plugin</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="publish-linux-arm.bat" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\DMC.Invokers\DMC.Invokers\DMC.Invokers.csproj" />
+    <ProjectReference Include="..\..\rpy\rnet.lib\rnet.lib.csproj" />
+  </ItemGroup>
+
+</Project>

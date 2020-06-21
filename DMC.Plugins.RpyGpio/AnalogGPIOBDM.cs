@@ -9,8 +9,5 @@ namespace DMC.Plugins.RpyGpio
 
         [InvokerProperty(Id = "v", Name = "v", MinLength = 0, MaxLength = 1024, Help = "Range from 0 to 1024")]
         public int Value { get; set; }
-
-        //[]
-        //public string Mode { get; set; }
     }
 }
