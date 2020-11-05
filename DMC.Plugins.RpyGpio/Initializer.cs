@@ -6,15 +6,20 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DMC.RpyGpio.Plugin
+namespace DMC.Plugins.RpyGpio
 {
     public class Initializer : IInitializer
     {
-        public void Init(IContainer container)
-        {
-            var pyProcess = container.Resolve<IPyProcess>();
-            pyProcess.Start();
+        private readonly IPyProcess pyProcess;
 
+        public Initializer(IPyProcess pyProcess)
+        {
+            this.pyProcess = pyProcess;
+        }
+
+        public void Init()
+        {
+            pyProcess.Start();
         }
     }
 }

@@ -3,8 +3,8 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
-    <AssemblyName>DMC.RpyGpio.Plugin</AssemblyName>
-    <RootNamespace>DMC.RpyGpio.Plugin</RootNamespace>
+    <AssemblyName>DMC.Plugins.RpyGpio</AssemblyName>
+    <RootNamespace>DMC.Plugins.RpyGpio</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

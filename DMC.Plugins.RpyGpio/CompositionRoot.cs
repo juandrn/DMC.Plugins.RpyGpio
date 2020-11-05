@@ -18,6 +18,8 @@ namespace DMC.Plugins.RpyGpio
 
             var rpyProcess = new LiveProcess($"{PluginContext.Dir}/rwy/rwy.py");
             r.RegisterInstance<IPyProcess>(rpyProcess, DILifeTime.Singleton);
+
+            r.Register<IInitializer, Initializer>(DILifeTime.Singleton);
         }
 
         public void ForLinux(IRegister r)
@@ -34,7 +36,7 @@ namespace DMC.Plugins.RpyGpio
 
         public void ForWindows(IRegister r)
         {
-            //ForAll(r);
+            ForAll(r);
             r.Register<IGPIO, Implementations.GPIOInvokerNotImplemented>(DILifeTime.Singleton);
         }
     }
