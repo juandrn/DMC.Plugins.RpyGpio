@@ -9,7 +9,7 @@ using System.Text.RegularExpressions;
 
 namespace DMC.Plugins.RpyGpio.Implementations
 {
-    public class GPIOInvokerNotImplemented : IGPIOBusiness
+    public class GPIOInvokerNotImplemented : IGPIO
     {
         public string Analog(AnalogGPIOBDM gpio)
         {
@@ -21,5 +21,9 @@ namespace DMC.Plugins.RpyGpio.Implementations
             throw new NotImplementedException("Not Implemented.");
         }
 
+        public void Dispose()
+        {
+            Console.WriteLine("Disposing");
+        }
     }
 }

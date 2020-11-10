@@ -4,6 +4,7 @@ using rnet.lib;
 using rnet.lib.Implementations.Live;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 
 namespace DMC.Plugins.RpyGpio
@@ -17,24 +18,26 @@ namespace DMC.Plugins.RpyGpio
 
             var rpyProcess = new LiveProcess($"{PluginContext.Dir}/rwy/rwy.py");
             r.RegisterInstance<IPyProcess>(rpyProcess, DILifeTime.Singleton);
+
+            r.Register<IInitializer, Initializer>(DILifeTime.Singleton);
         }
 
         public void ForLinux(IRegister r)
         {
             ForAll(r);
-            r.Register<IGPIOBusiness, Implementations.GPIOInvokerNotImplemented>();
+            r.Register<IGPIO, Implementations.GPIOInvokerNotImplemented>(DILifeTime.Singleton);
         }
 
         public void ForRaspberry(IRegister r)
         {
             ForAll(r);
-            r.Register<IGPIOBusiness, Implementations.RaspberryRNetInvoker>();
+            r.Register<IGPIO, Implementations.RaspberryRNetInvoker>(DILifeTime.Singleton);
         }
 
         public void ForWindows(IRegister r)
         {
             ForAll(r);
-            r.Register<IGPIOBusiness, Implementations.GPIOInvokerNotImplemented>();
+            r.Register<IGPIO, Implementations.GPIOInvokerNotImplemented>(DILifeTime.Singleton);
         }
     }
 }

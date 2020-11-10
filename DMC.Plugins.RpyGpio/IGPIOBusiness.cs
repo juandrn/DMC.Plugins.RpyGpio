@@ -11,7 +11,7 @@ namespace DMC.Plugins.RpyGpio
         , Name = "gpio"
         , Help = "Can control GPIO of a raspberry."
         , OS = new[] { InvokerOS.Raspbian, InvokerOS.Windows })]
-    public interface IGPIOBusiness
+    public interface IGPIO : IDisposable
     {
         [InvokerMethod(Id = "a", Name = "a", Order = 0, Help = "Analog GPIO")]
         string Analog(AnalogGPIOBDM gpio);

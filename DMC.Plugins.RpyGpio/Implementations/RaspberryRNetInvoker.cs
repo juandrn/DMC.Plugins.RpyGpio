@@ -5,14 +5,13 @@ using System;
 
 namespace DMC.Plugins.RpyGpio.Implementations
 {
-    public class RaspberryRNetInvoker : IGPIOBusiness, IDisposable
+    public class RaspberryRNetInvoker : IGPIO
     {
         private readonly IPyProcess rpyProcess;
 
         public RaspberryRNetInvoker(IPyProcess rpyProcess)
         {
             this.rpyProcess = rpyProcess;
-            this.rpyProcess.Start();
         }
 
         public string Analog(AnalogGPIOBDM gpio)
